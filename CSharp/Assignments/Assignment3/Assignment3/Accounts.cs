@@ -126,7 +126,7 @@ namespace Assignment3
         }
         public static void ShowData()
         {
-            Console.WriteLine($"SalesNo: {SalesNo}\nProductNo: {ProductNo}\nPrice: {Price}\nQuantity: {Qty}\nDateOfSale: {DateOfSale}");
+            Console.WriteLine($"SalesNo: {SalesNo}\nProductNo: {ProductNo}\nPrice: {Price}\nQuantity: {Qty}\nDateOfSale: {DateOfSale}\nTotalAmount: {TotalAmount}");
         }
     }
 
@@ -171,7 +171,17 @@ namespace Assignment3
             st.DisplayData();
             */
 
+            // Question 3
+            Console.WriteLine("-----Sales Details-----");
+            // Creating an object and passing values to the constructor
+            SaleDetails sale = new SaleDetails("S001", "P123", 100, 5, DateTime.Now);
+
+            // Calling the Sales method to calculate the total amount
+            sale.Sales(5, 100);
+
+            // Since ShowData is static, it's called using the class name
             SaleDetails.ShowData();
+
 
 
             Console.ReadLine();

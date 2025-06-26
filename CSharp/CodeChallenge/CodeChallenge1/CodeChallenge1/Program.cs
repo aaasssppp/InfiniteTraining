@@ -28,9 +28,7 @@ namespace CodeChallenge1
         }
         static int LargestNumber(int num1, int num2, int num3)
         {
-            int maxNum = int.MinValue;
-            if (num1 > maxNum)
-                maxNum = num1;
+            int maxNum = num1;
             if (num2 > maxNum)
                 maxNum = num2;
             if (num3 > maxNum)
