@@ -1,0 +1,7 @@
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge2\CodeChallenge2\bin\Debug\CodeChallenge2.exe.config
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge2\CodeChallenge2\bin\Debug\CodeChallenge2.exe
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge2\CodeChallenge2\bin\Debug\CodeChallenge2.pdb
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge2\CodeChallenge2\obj\Debug\CodeChallenge2.csproj.AssemblyReference.cache
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge2\CodeChallenge2\obj\Debug\CodeChallenge2.csproj.CoreCompileInputs.cache
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge2\CodeChallenge2\obj\Debug\CodeChallenge2.exe
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge2\CodeChallenge2\obj\Debug\CodeChallenge2.pdb
