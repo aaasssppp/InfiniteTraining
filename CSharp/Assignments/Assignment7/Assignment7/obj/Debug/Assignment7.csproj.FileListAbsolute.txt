@@ -1,0 +1,7 @@
+C:\Syam Prasad\Training\git_Assignments\CSharp\Assignments\Assignment7\Assignment7\bin\Debug\Assignment7.exe.config
+C:\Syam Prasad\Training\git_Assignments\CSharp\Assignments\Assignment7\Assignment7\bin\Debug\Assignment7.exe
+C:\Syam Prasad\Training\git_Assignments\CSharp\Assignments\Assignment7\Assignment7\bin\Debug\Assignment7.pdb
+C:\Syam Prasad\Training\git_Assignments\CSharp\Assignments\Assignment7\Assignment7\obj\Debug\Assignment7.csproj.AssemblyReference.cache
+C:\Syam Prasad\Training\git_Assignments\CSharp\Assignments\Assignment7\Assignment7\obj\Debug\Assignment7.csproj.CoreCompileInputs.cache
+C:\Syam Prasad\Training\git_Assignments\CSharp\Assignments\Assignment7\Assignment7\obj\Debug\Assignment7.exe
+C:\Syam Prasad\Training\git_Assignments\CSharp\Assignments\Assignment7\Assignment7\obj\Debug\Assignment7.pdb
