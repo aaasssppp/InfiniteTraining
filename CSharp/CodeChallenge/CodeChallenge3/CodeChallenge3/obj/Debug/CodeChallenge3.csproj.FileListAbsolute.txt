@@ -1,0 +1,7 @@
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge3\CodeChallenge3\bin\Debug\CodeChallenge3.exe.config
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge3\CodeChallenge3\bin\Debug\CodeChallenge3.exe
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge3\CodeChallenge3\bin\Debug\CodeChallenge3.pdb
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge3\CodeChallenge3\obj\Debug\CodeChallenge3.csproj.AssemblyReference.cache
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge3\CodeChallenge3\obj\Debug\CodeChallenge3.csproj.CoreCompileInputs.cache
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge3\CodeChallenge3\obj\Debug\CodeChallenge3.exe
+C:\Syam Prasad\Training\git_Assignments\CSharp\CodeChallenge\CodeChallenge3\CodeChallenge3\obj\Debug\CodeChallenge3.pdb
