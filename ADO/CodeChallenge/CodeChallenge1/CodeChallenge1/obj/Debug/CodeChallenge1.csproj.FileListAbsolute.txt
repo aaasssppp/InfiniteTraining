@@ -1,0 +1,6 @@
+C:\Syam Prasad\Training\git_Assignments\ADO\CodeChallenge\CodeChallenge1\CodeChallenge1\bin\Debug\CodeChallenge1.exe.config
+C:\Syam Prasad\Training\git_Assignments\ADO\CodeChallenge\CodeChallenge1\CodeChallenge1\bin\Debug\CodeChallenge1.exe
+C:\Syam Prasad\Training\git_Assignments\ADO\CodeChallenge\CodeChallenge1\CodeChallenge1\bin\Debug\CodeChallenge1.pdb
+C:\Syam Prasad\Training\git_Assignments\ADO\CodeChallenge\CodeChallenge1\CodeChallenge1\obj\Debug\CodeChallenge1.csproj.CoreCompileInputs.cache
+C:\Syam Prasad\Training\git_Assignments\ADO\CodeChallenge\CodeChallenge1\CodeChallenge1\obj\Debug\CodeChallenge1.exe
+C:\Syam Prasad\Training\git_Assignments\ADO\CodeChallenge\CodeChallenge1\CodeChallenge1\obj\Debug\CodeChallenge1.pdb
