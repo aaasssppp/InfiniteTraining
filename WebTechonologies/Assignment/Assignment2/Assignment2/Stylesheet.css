@@ -1,0 +1,119 @@
+﻿/* Question 1 */ 
+.container {
+    position: relative;
+    width: 300px;
+    margin: 0 auto; /* center aligning using margin */
+}
+
+.image {
+    display: block;
+    width: 100%; /* fits parent container*/
+    height: auto; /* maintains aspect ratio */
+}
+
+.overlay {
+    position: absolute; /* making it related to parent */
+    top: 0;
+    left: 0; /* starts with top-left */
+    height: 100%;
+    width: 100%; /* fits entire parent container */
+    background-color: rgba(0, 0, 0, 0.6); /* pure black (0,0,0) with alpha(0.6) -> 60% opaque and 40% transparent*/
+    color: white; /* font color: white */
+    display: flex; /* turns container into flex container, enabling Flexbox layout system */
+    justify-content: center; /* horizontal center align */
+    align-items: center; /* vertical center align */
+    opacity: 0; /* making the overlay text invisible. We will have to make it visible (transition) only on mouse hover */
+    transition: 0.3s ease; /* animation duration is 0.3 secs, ease means smooth duration */
+    font-size: 20px; /* font-size */
+}
+
+.container:hover .overlay {
+    opacity: 1; /* when we hover on container, the opacity is made to 1 (visible)*/
+}
+
+
+/* Question 2 */
+.css3-button {
+    background: linear-gradient(to right, #4CAF50, #45a049); /* Creates a straight-line gradient, flows from left -> right, starting color, ending color */
+    color: white; /* font color */
+    padding: 12px 24px; /* padding - space b/w content and border top&bottom - 12px, left&right - 24px */
+    font-size: 16px; /* font size */
+    border: none; /* no border */
+    border-radius: 8px; /* border-radius makes the edge of the box curvy */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 0 → Horizontal offset → shadow is not shifted left or right. 4px → Vertical offset → shadow is 4px below the element. 6px → Blur radius → larger values make the shadow softer and more spread out. rgba(0, 0, 0, 0.2) → Shadow color → black with 20% transparency.*/
+    cursor: pointer; /* changes the mouse cursor to a hand icon while hovering. It’s a visual cue telling the user: “You can click this!” */
+    transition: all 0.3s ease; /* all → Apply the transition to every animatable property (e.g., color, background, opacity, transform, etc.).*/
+}
+
+.css3-button:hover { /* style applied while hovering */
+    background: linear-gradient(to right, #45a049, #4CAF50); /* reversing the gradient */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* increasing shadow effect */
+    transform: scale(1.05); /* increasing the scale of the button */
+}
+
+/* Question 3 */
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: #4CAF50;
+    position: relative;
+    animation-name: slide;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    /* short hand: animation: slide 2s ease forwards;*/ /* slide we'll configure, 2s - durations of animation, ease - smooth transition, forward movement */
+    animation-delay: 2s; /* wait 2 seconds before starting the animation */
+}
+
+@keyframes slide {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 200px;
+    }
+}
+
+.restart-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+
+/* Question 5 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container1 {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+img {
+    max-width: 300px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+h1 {
+    margin-top: 15px;
+    font-size: 28px;
+    color: #333;
+}
+
+ul {
+    text-align: left;
+    display: inline-block;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}

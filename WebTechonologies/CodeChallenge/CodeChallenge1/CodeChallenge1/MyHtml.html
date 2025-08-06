@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>CodeChallenge1</title>
+    <link rel="stylesheet" href="MyStyle.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>1. Multiplication & Division</h2>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <br /><br />
+    <input type="number" id="num2" placeholder="Enter second number">
+    <br /><br />
+    <button onclick="Multiply()">Multiply</button> &nbsp;&nbsp;
+    <button onclick="Divide()">Divide</button>
+    <p id="result"></p>
+
+    <hr>
+
+    <h2>2. Odd/Even Check (0-15)</h2>
+    <button onclick="OddEvenCheck()">Run Check</button>
+    <div id="oddEvenOutput"></div>
+
+    <hr>
+
+    <h2>3. Button Click Event</h2>
+    <button id="MyBtn">Click Me</button>
+
+    <hr>
+
+    <h2>4. Table Example (Hide Odd Rows)</h2>
+    <table id="MyTable">
+        <tr><th>ID</th><th>Name</th></tr>
+        <tr><td>1</td><td>John</td></tr>
+        <tr><td>2</td><td>Mary</td></tr>
+        <tr><td>3</td><td>Alex</td></tr>
+        <tr><td>4</td><td>Sara</td></tr>
+    </table>
+    <button onclick="HideOddRows()">Hide Odd Rows</button>
+
+    <hr>
+
+    <h2>5. Apply Background to h1 in div</h2>
+    <div>
+        <h1>Heading 1</h1>
+    </div>
+    <div>
+        <h1>Heading 2</h1>
+    </div>
+    <h1>Heading Outside Div</h1>
+    <button onclick="HighlightDivH1()">Highlight h1 in Div</button>
+
+    <hr>
+
+    <h2>6 & 7. List Items Example</h2>
+    <ul id="MyList">
+        <li>CSHARP</li>
+        <li>SQL</li>
+        <li>ADO</li>
+    </ul>
+    <button onclick="SelectSecond()">Select 2nd Item</button>
+    <button onclick="AddIndex()">Add Index to List</button>
+
+    <hr>
+
+    <h2>8. Append Text on Input Change</h2>
+    <input type="text" id="InputChanged" placeholder="Type something...">
+
+    <script src="MyScript.js"></script>
+</body>
+</html>
