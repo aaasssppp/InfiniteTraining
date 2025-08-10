@@ -4,16 +4,16 @@ CREATE TABLE Users (
     Username VARCHAR(50) NOT NULL UNIQUE,
     Password VARCHAR(50) NOT NULL,
     Role VARCHAR(10) CHECK (Role IN ('Admin', 'Customer'))
-);
+)
 
 -- Insert default Admin
 INSERT INTO Users (Username, Password, Role)
-VALUES ('admin', 'admin123', 'Admin');
+VALUES ('admin', 'admin123', 'Admin')
 
 -- Insert example customers
 INSERT INTO Users (Username, Password, Role)
 VALUES ('cust1', 'pass1', 'Customer'),
-       ('cust2', 'pass2', 'Customer');
+       ('cust2', 'pass2', 'Customer')
 
 -----------------------------------------------------------
 
@@ -30,14 +30,14 @@ CREATE TABLE TrainDetails (
     Class2Cost FLOAT NOT NULL,
     Class3Cost FLOAT NOT NULL,
     IsActive BIT DEFAULT 1
-);
+)
 
 -- Sample Train Data
 INSERT INTO TrainDetails
 (TrainNo, TrainName, FromStation, ToStation, Class1Max, Class2Max, Class3Max, Class1Cost, Class2Cost, Class3Cost)
 VALUES
 (101, 'Chennai Express', 'Chennai', 'Delhi', 50, 100, 200, 2500, 1800, 1200),
-(102, 'Bangalore Mail', 'Bangalore', 'Mumbai', 40, 80, 150, 2200, 1600, 1100);
+(102, 'Bangalore Mail', 'Bangalore', 'Mumbai', 40, 80, 150, 2200, 1600, 1100)
 
 -----------------------------------------------------------
 
@@ -52,7 +52,7 @@ CREATE TABLE Reservation (
     TotalCost FLOAT NOT NULL,
     DateOfBooking DATE NOT NULL DEFAULT GETDATE(),
     IsCancelled BIT DEFAULT 0
-);
+)
 
 -----------------------------------------------------------
 
@@ -62,7 +62,7 @@ CREATE TABLE Cancellation (
     BookingId INT NOT NULL FOREIGN KEY REFERENCES Reservation(BookingId),
     CancellationDate DATE NOT NULL DEFAULT GETDATE(),
     RefundAmount FLOAT NOT NULL
-);
+)
 
 SELECT * FROM Users
 SELECT * FROM TrainDetails

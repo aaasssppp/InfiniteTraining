@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3904CA06-3548-4A86-8DA6-ECAF39B6E2C6}</ProjectGuid>
+    <ProjectGuid>{8172D5D0-E8B1-4768-AB9F-A9EEA42EE399}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MiniProject</RootNamespace>
-    <AssemblyName>MiniProject</AssemblyName>
+    <RootNamespace>MiniProject_SingleFile</RootNamespace>
+    <AssemblyName>MiniProject_SingleFile</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminOperations.cs" />
+    <Compile Include="DBHelper.cs" />
+    <Compile Include="Models.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Session.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
