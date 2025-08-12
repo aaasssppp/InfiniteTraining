@@ -5,8 +5,47 @@ using System.Collections.Generic;
 
 namespace MiniProjectRRS
 {
+
     public class AdminOperations
     {
+        public static void ViewAllTrains()
+        {
+            Console.Clear();
+            Console.WriteLine("===== TRAIN LIST =====");
+            Console.WriteLine($"{"TrainNo",-7} | {"TrainName",-20} | {"From",-12} | {"To",-12} | {"1AC Avl",-8} | {"2AC Avl",-8} | {"3AC Avl",-8} | {"Dep Time",-8} | Active");
+            Console.WriteLine(new string('-', 100));
+
+
+            string query = "SELECT TrainNo, TrainName, FromStation, ToStation, Class1Available, Class2Available, Class3Available, DepartureTime, IsActive FROM TrainDetails ORDER BY TrainNo";
+            DataTable dt = DBHelper.ExecuteQuery(query);
+
+            if (dt.Rows.Count == 0)
+            {
+                Console.WriteLine("No trains found.");
+            }
+            else
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    Console.WriteLine(
+                        $"{row["TrainNo"],-7} | " +
+                        $"{row["TrainName"],-20} | " +
+                        $"{row["FromStation"],-12} | " +
+                        $"{row["ToStation"],-12} | " +
+                        $"{row["Class1Available"],-8} | " +
+                        $"{row["Class2Available"],-8} | " +
+                        $"{row["Class3Available"],-8} | " +
+                        $"{TimeSpan.Parse(row["DepartureTime"].ToString()),-8} | " +
+                        $"{((bool)row["IsActive"] ? "Yes" : "No")}"
+                    );
+                }
+            }
+
+            Console.WriteLine("\nPress any key to return to menu...");
+            Console.ReadKey();
+            Console.Clear();
+        }
+
         // 1) Add Train
         public void AddTrain()
         {
@@ -26,6 +65,16 @@ namespace MiniProjectRRS
                     Console.WriteLine("Name/from/to cannot be empty. Press Enter...");
                     Console.ReadLine();
                     return;
+                }
+                //prompt for departure time
+                TimeSpan departureTime;
+                while (true)
+                {
+                    Console.Write("Departure Time (HH:mm, 24-hour format): ");
+                    string depTimeInput = Console.ReadLine()?.Trim();
+                    if (TimeSpan.TryParse(depTimeInput, out departureTime))
+                        break;
+                    Console.WriteLine("Invalid time format. Please enter time as HH:mm (e.g., 15:30).");
                 }
 
                 int c1 = PromptInt("Class1 (1AC) Capacity: ");
@@ -105,6 +154,62 @@ VALUES
             Console.ReadLine();
         }
 
+        public void ReactivateTrain()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("===== REACTIVATE SOFT-DELETED TRAIN =====");
+
+                // Display only soft-deleted trains (IsActive = 0)
+                string query = "SELECT TrainNo, TrainName, FromStation, ToStation FROM TrainDetails WHERE IsActive = 0";
+                DataTable dt = DBHelper.ExecuteQuery(query);
+
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    Console.WriteLine("No soft-deleted trains found. Press Enter...");
+                    Console.ReadLine();
+                    return;
+                }
+
+                Console.WriteLine("TrainNo | TrainName           | From -> To");
+                Console.WriteLine("--------------------------------------------");
+                foreach (DataRow r in dt.Rows)
+                {
+                    Console.WriteLine($"{r["TrainNo"],-7} | {r["TrainName"],-18} | {r["FromStation"]} -> {r["ToStation"]}");
+                }
+
+                int trainNo = PromptInt("Enter TrainNo to reactivate (or 0 to cancel): ");
+                if (trainNo == 0) return;
+
+                // Check if train exists and is soft-deleted
+                DataTable trainCheck = DBHelper.ExecuteQuery("SELECT * FROM TrainDetails WHERE TrainNo=@tno AND IsActive=0",
+                                                            new[] { DBHelper.Param("@tno", trainNo) });
+                if (trainCheck == null || trainCheck.Rows.Count == 0)
+                {
+                    Console.WriteLine("Train not found or already active. Press Enter...");
+                    Console.ReadLine();
+                    return;
+                }
+
+                // Update IsActive to 1 (reactivate)
+                string updateQuery = "UPDATE TrainDetails SET IsActive = 1 WHERE TrainNo=@tno";
+                int rows = DBHelper.ExecuteNonQuery(updateQuery, new[] { DBHelper.Param("@tno", trainNo) });
+
+                if (rows > 0)
+                    Console.WriteLine("Train reactivated successfully. Press Enter...");
+                else
+                    Console.WriteLine("Failed to reactivate train. Press Enter...");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reactivating train: {ex.Message}");
+            }
+            Console.ReadLine();
+        }
+
+
         // 3) View Earnings Report
         public void ViewEarningsReport()
         {
@@ -113,12 +218,14 @@ VALUES
                 Console.Clear();
                 Console.WriteLine("===== EARNINGS REPORT =====");
                 string q = @"
-SELECT td.TrainNo, td.TrainName,
-       ISNULL(SUM(r.TotalCost),0) AS TotalSales,
-       ISNULL(SUM(c.RefundAmount),0) AS TotalRefunds,
-       ISNULL(SUM(r.TotalCost),0) - ISNULL(SUM(c.RefundAmount),0) AS NetEarnings
+SELECT 
+    td.TrainNo,
+    td.TrainName,
+    ISNULL(SUM(CASE WHEN r.IsCancelled = 0 THEN r.TotalCost ELSE 0 END), 0) AS TotalSales,
+    ISNULL(SUM(c.RefundAmount), 0) AS TotalRefunds,
+    ISNULL(SUM(CASE WHEN r.IsCancelled = 0 THEN r.TotalCost ELSE 0 END), 0) - ISNULL(SUM(c.RefundAmount), 0) AS NetEarnings
 FROM TrainDetails td
-LEFT JOIN Reservation r ON td.TrainNo = r.TrainNo AND r.IsCancelled = 0
+LEFT JOIN Reservation r ON td.TrainNo = r.TrainNo
 LEFT JOIN Cancellation c ON r.BookingId = c.BookingId
 GROUP BY td.TrainNo, td.TrainName
 ORDER BY td.TrainNo;
@@ -135,7 +242,7 @@ ORDER BY td.TrainNo;
                 Console.WriteLine("-------------------------------------------------------------------");
                 foreach (DataRow r in dt.Rows)
                 {
-                    Console.WriteLine($"{r["TrainNo"],-7} | {r["TrainName"],-18} | {Convert.ToDecimal(r["TotalSales"]):0.00,9} | {Convert.ToDecimal(r["TotalRefunds"]):0.00,9} | {Convert.ToDecimal(r["NetEarnings"]):0.00,11}");
+                    Console.WriteLine($"{r["TrainNo"],-7} | {r["TrainName"],-18} | {Convert.ToDecimal(r["TotalSales"]),9:0.00} | {Convert.ToDecimal(r["TotalRefunds"]),9:0.00} | {Convert.ToDecimal(r["NetEarnings"]),11:0.00}");
                 }
             }
             catch (Exception ex)

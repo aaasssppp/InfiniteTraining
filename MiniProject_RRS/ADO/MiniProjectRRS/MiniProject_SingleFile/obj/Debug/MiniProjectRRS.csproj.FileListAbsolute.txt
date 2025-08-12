@@ -5,3 +5,10 @@ C:\Syam Prasad\Training\git_Assignments\MiniProject_RRS\ADO\MiniProject_SingleFi
 C:\Syam Prasad\Training\git_Assignments\MiniProject_RRS\ADO\MiniProject_SingleFile\MiniProject_SingleFile\obj\Debug\MiniProjectRRS.csproj.CoreCompileInputs.cache
 C:\Syam Prasad\Training\git_Assignments\MiniProject_RRS\ADO\MiniProject_SingleFile\MiniProject_SingleFile\obj\Debug\MiniProject_SingleFile.exe
 C:\Syam Prasad\Training\git_Assignments\MiniProject_RRS\ADO\MiniProject_SingleFile\MiniProject_SingleFile\obj\Debug\MiniProject_SingleFile.pdb
+C:\Syam Prasad\Training\git_Assignments\MiniProject_RRS\ADO\MiniProjectRRS\MiniProject_SingleFile\bin\Debug\MiniProject_SingleFile.exe.config
+C:\Syam Prasad\Training\git_Assignments\MiniProject_RRS\ADO\MiniProjectRRS\MiniProject_SingleFile\bin\Debug\MiniProject_SingleFile.exe
+C:\Syam Prasad\Training\git_Assignments\MiniProject_RRS\ADO\MiniProjectRRS\MiniProject_SingleFile\bin\Debug\MiniProject_SingleFile.pdb
+C:\Syam Prasad\Training\git_Assignments\MiniProject_RRS\ADO\MiniProjectRRS\MiniProject_SingleFile\obj\Debug\MiniProjectRRS.csproj.AssemblyReference.cache
+C:\Syam Prasad\Training\git_Assignments\MiniProject_RRS\ADO\MiniProjectRRS\MiniProject_SingleFile\obj\Debug\MiniProjectRRS.csproj.CoreCompileInputs.cache
+C:\Syam Prasad\Training\git_Assignments\MiniProject_RRS\ADO\MiniProjectRRS\MiniProject_SingleFile\obj\Debug\MiniProject_SingleFile.exe
+C:\Syam Prasad\Training\git_Assignments\MiniProject_RRS\ADO\MiniProjectRRS\MiniProject_SingleFile\obj\Debug\MiniProject_SingleFile.pdb

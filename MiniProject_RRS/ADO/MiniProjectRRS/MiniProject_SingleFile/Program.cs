@@ -123,33 +123,41 @@ namespace MiniProjectRRS
             {
                 Console.Clear();
                 Console.WriteLine($"===== ADMIN MENU ({Session.Username}) =====");
-                Console.WriteLine("1. Add Train");
-                Console.WriteLine("2. Soft Delete Train");
-                Console.WriteLine("3. View Earnings Report");
-                Console.WriteLine("4. Cancel All Bookings for a Train & Refund");
-                Console.WriteLine("5. Cancel Individual Booking & Refund");
-                Console.WriteLine("6. Logout");
+                Console.WriteLine("1. View All Trains");
+                Console.WriteLine("2. Add Train");
+                Console.WriteLine("3. Soft Delete Train");
+                Console.WriteLine("4. Reactivate Train");
+                Console.WriteLine("5. View Earnings Report");
+                Console.WriteLine("6. Cancel All Bookings for a Train & Refund");
+                Console.WriteLine("7. Cancel Individual Booking & Refund");
+                Console.WriteLine("8. Logout");
                 Console.Write("Enter choice: ");
                 string choice = Console.ReadLine();
 
                 switch (choice)
                 {
                     case "1":
-                        adminOps.AddTrain();
+                        AdminOperations.ViewAllTrains();
                         break;
                     case "2":
-                        adminOps.SoftDeleteTrain();
+                        adminOps.AddTrain();
                         break;
                     case "3":
-                        adminOps.ViewEarningsReport();
+                        adminOps.SoftDeleteTrain();
                         break;
                     case "4":
-                        adminOps.CancelAllBookingsForTrain();
+                        adminOps.ReactivateTrain();
                         break;
                     case "5":
-                        adminOps.CancelIndividualBooking();
+                        adminOps.ViewEarningsReport();
                         break;
                     case "6":
+                        adminOps.CancelAllBookingsForTrain();
+                        break;
+                    case "7":
+                        adminOps.CancelIndividualBooking();
+                        break;
+                    case "8":
                         Session.Clear();
                         return;
                     default:
@@ -202,10 +210,12 @@ namespace MiniProjectRRS
                 Console.WriteLine("===== BOOK TICKET =====");
 
                 string query = @"SELECT TrainNo, TrainName, FromStation, ToStation,
-                                Class1Available, Class1Cost, Class2Available, Class2Cost, Class3Available, Class3Cost
-                                FROM TrainDetails
-                                WHERE IsActive = 1
-                                AND (Class1Available > 0 OR Class2Available > 0 OR Class3Available > 0)";
+                Class1Available, Class1Cost, Class2Available, Class2Cost, Class3Available, Class3Cost,
+                DepartureTime
+                FROM TrainDetails
+                WHERE IsActive = 1
+                AND (Class1Available > 0 OR Class2Available > 0 OR Class3Available > 0)";
+
 
                 DataTable trainDetails = DBHelper.ExecuteQuery(query);
 
@@ -219,7 +229,7 @@ namespace MiniProjectRRS
                 Console.WriteLine("\nAvailable Trains:");
                 foreach (DataRow t in trainDetails.Rows)
                 {
-                    Console.WriteLine($"TrainNo: {t["TrainNo"]} | {t["TrainName"]} | {t["FromStation"]} -> {t["ToStation"]}");
+                    Console.WriteLine($"TrainNo: {t["TrainNo"]} | {t["TrainName"]} | {t["FromStation"]} -> {t["ToStation"]} | Dep Time: {TimeSpan.Parse(t["DepartureTime"].ToString())}");
                     Console.WriteLine($"   1AC: Seats {t["Class1Available"]}, Price {t["Class1Cost"]}");
                     Console.WriteLine($"   2AC: Seats {t["Class2Available"]}, Price {t["Class2Cost"]}");
                     Console.WriteLine($"   3AC: Seats {t["Class3Available"]}, Price {t["Class3Cost"]}");
@@ -268,6 +278,32 @@ namespace MiniProjectRRS
                     Console.ReadLine();
                     return;
                 }
+
+                // Validate date is not in the past
+                DateTime today = DateTime.Today;
+                if (travelDate.Date < today)
+                {
+                    Console.WriteLine("Cannot book for a past date.");
+                    Console.ReadLine();
+                    return;
+                }
+
+                // If booking for today, check 1-hour rule
+                // First get departure time from TrainDetails
+                string depQuery = "SELECT DepartureTime FROM TrainDetails WHERE TrainNo = @tno";
+                DataTable depDt = DBHelper.ExecuteQuery(depQuery, new SqlParameter[] { new SqlParameter("@tno", trainNo) });
+                if (depDt.Rows.Count > 0)
+                {
+                    TimeSpan depTime = TimeSpan.Parse(depDt.Rows[0]["DepartureTime"].ToString());
+                    DateTime depDateTime = travelDate.Date + depTime;
+                    if (travelDate.Date == today && DateTime.Now > depDateTime.AddHours(-1))
+                    {
+                        Console.WriteLine("Booking closed: Less than 1 hour before train departure.");
+                        Console.ReadLine();
+                        return;
+                    }
+                }
+
 
                 decimal totalCost = seats * Convert.ToDecimal(train[costCol]);
                 Console.WriteLine($"\nTotal Cost: {totalCost:C}");
@@ -412,6 +448,12 @@ namespace MiniProjectRRS
                                         SET {availCol} = {availCol} + 1 
                                         WHERE TrainNo = (SELECT TrainNo FROM Reservation WHERE BookingId = @bid)";
                 DBHelper.ExecuteNonQuery(updateSeats, new SqlParameter[] { new SqlParameter("@bid", bookingId) });
+
+                // By default it gives in dollars
+
+                // Set culture to India
+                // using System.Globalization;
+                // CultureInfo indianCulture = new CultureInfo("en-IN");
 
                 Console.WriteLine($"Ticket cancelled. Refund: {refund:C}");
                 Console.ReadLine();
