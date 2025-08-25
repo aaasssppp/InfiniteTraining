@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header>
+        <nav style="background-color:#333; padding:10px;">
+            <a href="@Url.Action("GermanyCustomers", "Code")" style="color:white; margin-right:15px; text-decoration:none;">
+                Germany Customers
+            </a>
+            <a href="@Url.Action("CustomerByOrder", "Code")" style="color:white; text-decoration:none;">
+                Customer by Order
+            </a>
+        </nav>
+    </header>
+
+    <div class="container" style="padding:20px;">
+        @RenderBody()
+    </div>
+
+    <footer style="background-color:#f1f1f1; text-align:center; padding:10px; margin-top:20px;">
+        <p>Database First Project, created by Syam</p>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

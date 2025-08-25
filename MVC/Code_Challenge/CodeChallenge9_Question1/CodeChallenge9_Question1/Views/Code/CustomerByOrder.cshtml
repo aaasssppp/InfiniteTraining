@@ -1,0 +1,33 @@
+﻿@model CodeChallenge9_Question1.Models.Customer
+
+@{
+    ViewBag.Title = "Customer by Order";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Customer for Order @ViewBag.OrderId</h2>
+
+@if (Model == null)
+{
+    <div class="alert alert-warning">No customer found.</div>
+}
+else
+{
+    <dl class="dl-horizontal">
+        <dt>Customer ID</dt>
+        <dd>@Model.CustomerID</dd>
+        <dt>Company</dt>
+        <dd>@Model.CompanyName</dd>
+        <dt>Contact</dt>
+        <dd>@Model.ContactName</dd>
+        <dt>Title</dt>
+        <dd>@Model.ContactTitle</dd>
+        <dt>Phone</dt>
+        <dd>@Model.Phone</dd>
+        <dt>Address</dt>
+        <dd>@Model.Address, @Model.City, @Model.Region, @Model.PostalCode, @Model.Country</dd>
+    </dl>
+}

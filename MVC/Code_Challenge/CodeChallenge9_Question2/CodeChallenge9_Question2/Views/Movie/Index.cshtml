@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CodeChallenge9_Question2.Models.Movie>
+
+<h2>Movies List</h2>
+<table border="1">
+    <tr>
+        <th>Movie ID</th>
+        <th>Movie Name</th>
+        <th>Director</th>
+        <th>Date Of Release</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@m.Mid</td>
+            <td>@m.MovieName</td>
+            <td>@m.DirectorName</td>
+            <td>@m.DateOfRelease.ToShortDateString()</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = m.Mid }) |
+                @Html.ActionLink("Delete", "Delete", new { id = m.Mid })
+            </td>
+        </tr>
+    }
+</table>
+<br />
+@Html.ActionLink("Add Movie", "Create")
