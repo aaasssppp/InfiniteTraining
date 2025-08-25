@@ -82,3 +82,4 @@ C:\Syam Prasad\Training\git_Assignments\MVC\Code_Challenge\CodeChallenge9_Questi
 C:\Syam Prasad\Training\git_Assignments\MVC\Code_Challenge\CodeChallenge9_Question2\CodeChallenge9_Question2\obj\Debug\CodeChallenge9_Question2.pdb
 C:\Syam Prasad\Training\git_Assignments\MVC\Code_Challenge\CodeChallenge9_Question2\CodeChallenge9_Question2\obj\Debug\CodeChallenge9_Question2.Migrations.InitialCreate.resources
 C:\Syam Prasad\Training\git_Assignments\MVC\Code_Challenge\CodeChallenge9_Question2\CodeChallenge9_Question2\obj\Debug\CodeChallenge9_Question2.csproj.GenerateResource.cache
+C:\Syam Prasad\Training\git_Assignments\MVC\Code_Challenge\CodeChallenge9_Question2\CodeChallenge9_Question2\obj\Debug\CodeChallenge9_Question2.Migrations.InitNewDatabase.resources

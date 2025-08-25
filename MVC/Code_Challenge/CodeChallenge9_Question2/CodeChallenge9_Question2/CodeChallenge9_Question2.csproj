@@ -137,6 +137,10 @@
     <Compile Include="Migrations\202508250645448_InitialCreate.designer.cs">
       <DependentUpon>202508250645448_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202508250658132_InitNewDatabase.cs" />
+    <Compile Include="Migrations\202508250658132_InitNewDatabase.designer.cs">
+      <DependentUpon>202508250658132_InitNewDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieContext.cs" />
@@ -180,10 +184,16 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
+    <Content Include="Views\Movie\Create.cshtml" />
+    <Content Include="Views\Movie\Edit.cshtml" />
+    <Content Include="Views\Movie\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202508250645448_InitialCreate.resx">
       <DependentUpon>202508250645448_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202508250658132_InitNewDatabase.resx">
+      <DependentUpon>202508250658132_InitNewDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
